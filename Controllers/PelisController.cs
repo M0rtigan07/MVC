@@ -22,17 +22,23 @@ namespace MVC.Controllers
         }
 
         // GET: Pelis
-        public async Task<IActionResult> Index( string cadenaBusqueda)
+
+        //Buscar Pelicula Por Titulo
+        public async Task<IActionResult> Index( string tituloBusqueda,string generoBusqueda )
         {
             var v_pelis = from m in _context.Peli
                           select m;
             v_pelis = _context.Peli.Include(c => c.Genero);
-            if (!String.IsNullOrEmpty(cadenaBusqueda))
+            if (!String.IsNullOrEmpty(tituloBusqueda) || !String.IsNullOrEmpty(generoBusqueda))
             {
-                v_pelis = v_pelis.Where(s => s.Titulo.Contains(cadenaBusqueda));
+                v_pelis = v_pelis.Where(s => s.Titulo.Contains(tituloBusqueda) || s.Genero.Descripcion.Contains(generoBusqueda));
             }
             return View(await v_pelis.ToListAsync());
         }
+
+        
+            
+        
 
         // GET: Pelis/Details/5
         public async Task<IActionResult> Details(int? id)

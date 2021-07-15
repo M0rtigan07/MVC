@@ -59,10 +59,17 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: cadetblue;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: whitesmoke;
+    font-family: Verdana;
 }
+
+h1{
+    letter-spacing:3px;
+    font-style:italic;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
